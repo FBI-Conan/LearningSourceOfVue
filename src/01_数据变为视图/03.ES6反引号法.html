@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+    <div class="list"></div>
+		<script>
+			const arr = [
+				{
+					name: "小明",
+					age: 12,
+					sex: "男",
+				},
+				{
+					name: "小红",
+					age: 11,
+					sex: "女",
+				},
+				{
+					name: "小强",
+					age: 13,
+					sex: "男",
+				},
+			];
+      const list = document.querySelector(".list");
+      arr.forEach(item => {
+        list.innerHTML += `
+          <div>${item.name}的信息：<div>
+          <ul>
+            <li>姓名：${item.name}</li>
+            <li>年龄：${item.age}</li>
+            <li>性别：${item.sex}</li>
+          </ul>
+        `
+      })
+		</script>
+	</body>
+</html>

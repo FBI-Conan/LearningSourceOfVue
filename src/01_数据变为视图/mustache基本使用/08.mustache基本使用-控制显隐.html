@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="list"></div>
+		<script src="../../source/mustache.js"></script>
+		<script>
+			const listEl = document.querySelector(".list");
+			/**
+			 * Mustache的{{}}中不支持表达式计算, 如：{{1+1}}
+			 * 	如果书写表达式{{就会失效}}
+			*/
+			/**
+			 * {{#}}和{{/}}是一对
+			*/
+			const templateStr = `
+				<div>
+					{{#isShow1}}
+						<div>
+							我不显示
+						</div>
+					{{/isShow1}}
+					{{#isShow2}}
+						<div>
+							我显示
+						</div>
+					{{/isShow2}}
+				</div>
+			`;
+			const data = {
+				isShow1: false,
+				isShow2: true,
+			};
+			listEl.innerHTML = Mustache.render(templateStr, data);
+		</script>
+	</body>
+</html>

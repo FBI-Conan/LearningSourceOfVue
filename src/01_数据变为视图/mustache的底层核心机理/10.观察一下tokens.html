@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="list"></div>
+  <script src="../../source/mustache.js"></script>
+  <script>
+    const listEl = document.querySelector(".list");
+    const templateStr = `
+				<ul>
+					{{#info}}
+						<li>{{name}}的爱好是：</li>
+						{{#hobbies}}
+							<p>{{.}}</p>
+						{{/hobbies}}
+					{{/info}}	
+				</ul>
+			`;
+			const data = {
+				info: [
+					{name: "Conan", age: 18, hobbies: ["侦探", "足球"]},
+					{name: "Heiji", age: 17, hobbies: ["看小说", "游泳", "拳击"]},
+					{name: "Moore", age: 17, hobbies: ["跆拳道"]}
+				],
+			};
+			listEl.innerHTML = Mustache.render(templateStr, data);
+  </script>
+</body>
+</html>

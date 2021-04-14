@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="list"></div>
+		<script src="../../source/mustache.js"></script>
+		<script>
+			const listEl = document.querySelector(".list");
+			const templateStr = `
+				<ul>
+					{{#info}}
+						<li>
+							<div>{{name}}的基本信息：</div>
+							<p>姓名：{{name}}</p>
+							<p>年龄：{{age}}</p>
+							<p>性别：{{sex}}</p>
+						</li>
+					{{/info}}
+				</ul>
+			`;
+			const data = {
+				info: [
+					{
+						name: "小明",
+						age: 12,
+						sex: "男",
+					},
+					{
+						name: "小红",
+						age: 11,
+						sex: "女",
+					},
+					{
+						name: "小强",
+						age: 13,
+						sex: "男",
+					},
+				],
+			};
+			/**
+			 * Mustache.render(templateStr, data)
+			 * 	templateStr 需要渲染的模板字符串
+			 * 	data 字符串中的数据
+			 */
+			listEl.innerHTML = Mustache.render(templateStr, data);
+		</script>
+	</body>
+</html>

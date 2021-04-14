@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="list"></div>
+		<div>我买了一个{{ thing }}，我好{{ mood }}</div>
+		<script>
+			[
+				["text", "<div>我买了一个"],
+				["name", "thing"],
+				["text", "，我好"],
+				["name", "mood"],
+				["text", "</div>"],
+			];
+			const listEl = document.querySelector(".list");
+			const templateStr = `<div>我买了一个{{ thing }}，我好{{ mood }}<div>`;
+			const data = {
+				thing: "手机",
+				mood: "开心",
+			};
+			/**
+			 * 捕获{{}}中的变量名，并替换{{变量名}}
+			 * 正则中可以用()去捕获匹配到的内容
+			 */
+			function render(str, data) {
+				const reg = /\{\{\s*(\w+)\s*\}\}/g;
+				/**
+				 * replace()的第二个参数可以是一个函数。
+				 * 在只有一个匹配项时，这个函数会收到 3 个参数：
+				 *  与整个模式匹配的字符串、匹配项在字符串中的开始位置，以及整个字符串。
+				 * 在有多个捕获组的情况下，
+				 *  每个匹配捕获组的字符串也会作为参数传给这个函数，
+				 *  但最后两个参数还是与整个模式匹配的开始位置和原始字符串。
+				 */
+				str = str.replace(reg, function (findStr, $1) {
+					return data[$1];
+				});
+				return str;
+			}
+			console.log(render(templateStr, data));
+		</script>
+	</body>
+</html>
