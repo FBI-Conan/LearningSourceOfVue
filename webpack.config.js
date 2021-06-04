@@ -2,7 +2,7 @@ const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
-  entry: resolve(__dirname, "src/index.js"),
+  entry: resolve(__dirname, "src/snabbdom/index.js"),
   output: {
     filename: "bundle.js",
     path: resolve(__dirname, "build")
@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, "src/index.html"),
+      template: resolve(__dirname, "src/snabbdom/index.html"),
       filename: "index.html"
     }),
   ],
