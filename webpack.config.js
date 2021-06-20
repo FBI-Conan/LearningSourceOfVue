@@ -2,7 +2,7 @@ const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
-  entry: resolve(__dirname, "src/snabbdom/index.js"),
+  entry: resolve(__dirname, "src/reactiveData/index.js"),
   output: {
     filename: "bundle.js",
     path: resolve(__dirname, "build")
@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, "src/snabbdom/index.html"),
+      template: resolve(__dirname, "src/reactiveData/index.html"),
       filename: "index.html"
     }),
   ],
